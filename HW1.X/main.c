@@ -60,10 +60,17 @@ int main() {
     LATAbits.LATA4 = 1; // Turn on LED1 ON
 
     __builtin_enable_interrupts();
-
+    _CP0_SET_COUNT(0);
     while(1) {
 	// use _CP0_SET_COUNT(0) and _CP0_GET_COUNT() to test the PIC timing
 	// remember the core timer runs at half the sysclk
+        while(_CP0_GET_COUNT() < 12000){ ; } //delay for 0.5ms(Core Timer always counts at half of the system clock))
+        LATAINV = 0x10;     // turn off/on LED
+        _CP0_SET_COUNT(0);  // Reset the timer
+        while(PORTBbits.RB4==0){
+        LATAbits.LATA4 = 0; 
+            } // if button is pushed, stop and wait
+
+            }
+        }
     
-    }
-}
