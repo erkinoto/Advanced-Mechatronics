@@ -86,18 +86,28 @@ int main() {
     LATAbits.LATA4 = 1; // Turn on LED1 ON
     initExpander();
     setExpander(0,1);
-    char value;
     
     __builtin_enable_interrupts();
-      _CP0_SET_COUNT(0);
-      while(_CP0_GET_COUNT()<24000000) {}
-        while(1){
-            value = getExpander()>>7;
-            setExpander(0,value);
-            } // if button is pushed, stop and wait
+    char value;
+   
+    while(1) {
     
+    _CP0_SET_COUNT(0); 
+    while(_CP0_GET_COUNT() < 4800000){  //
+    LATAbits.LATA4 = 0;     // turn off/on LED
+            
+    }
+    
+    _CP0_SET_COUNT(0);
+    while(_CP0_GET_COUNT() < 4800000){ //
+    LATAbits.LATA4 = 1;
+            
+    } 
+    value = getExpander()>>7;
+    setExpander(0,value);
+    
+}
     return 0;
-    
 }
 
 
