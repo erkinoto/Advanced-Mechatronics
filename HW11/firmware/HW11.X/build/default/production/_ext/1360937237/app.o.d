@@ -193,6 +193,6 @@ build/default/production/_ext/1360937237/app.o:  \
  ../../../../../../../../../microchip/harmony/v2_06/framework/usb/src/usb_device_function_driver.h  \
  ../../../../../../../../../microchip/harmony/v2_06/framework/usb/usb_cdc.h  \
  ../src/app.h  \
-../src/imu.h  \
+../src/LSM6DS33.h  \
 ../src/i2c_master_noint.h  \
-../src/ili9341.h 
+ ../src/ili9341.h 
